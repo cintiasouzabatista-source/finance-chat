@@ -5,11 +5,22 @@ export default function Home() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
 
-  function send() {
-    if (!input) return;
-    setMessages([...messages, input]);
-    setInput("");
-  }
+  import { supabase } from "../lib/supabase";
+
+async function send() {
+  if (!input) return;
+
+  await supabase.from("transações").insert([
+    {
+      texto: input,
+      quantia: 0,
+      tipo: "outro"
+    }
+  ]);
+
+  setMessages([...messages, input]);
+  setInput("");
+}
 
   return (
     <div style={{
