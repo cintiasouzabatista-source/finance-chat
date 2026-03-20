@@ -1,12 +1,6 @@
-import React from "react";
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }) {
   return (
-    <html lang="pt-br">
+    <html>
       <body>{children}</body>
     </html>
   );
