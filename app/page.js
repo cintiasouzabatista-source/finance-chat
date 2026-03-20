@@ -1,5 +1,19 @@
 "use client";
 import { useState } from "react";
+useEffect(() => {
+  loadMessages();
+}, []);
+
+async function loadMessages() {
+  const { data } = await supabase
+    .from("transações")
+    .select("*")
+    .order("criado_em", { ascending: true });
+
+  if (data) {
+    setMessages(data.map((item) => item.texto));
+  }
+}
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
