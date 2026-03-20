@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "../lib/supabase"; // ✅ AQUI EM CIMA
+import { supabase } from "../lib/supabase.js"; // ✅ AQUI EM CIMA
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
